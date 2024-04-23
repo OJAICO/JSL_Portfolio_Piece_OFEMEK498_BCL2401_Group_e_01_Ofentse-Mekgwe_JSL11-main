@@ -67,7 +67,13 @@ function displayBoards(boards) {
     });
   });
 }
-    
+
+
+const colTitle = {
+  todo: 'todo',
+  doing: 'doing',
+  done: 'done',
+}
 
 // Filters tasks corresponding to the board name and displays them on the DOM.
 // TASK: Fix Bugs
