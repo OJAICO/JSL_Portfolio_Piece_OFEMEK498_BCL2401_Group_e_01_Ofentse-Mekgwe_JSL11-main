@@ -73,7 +73,7 @@ const colTitle = {
   todo: 'todo',
   doing: 'doing',
   done: 'done',
-}
+};
 
 // Filters tasks corresponding to the board name and displays them on the DOM.
 // TASK: Fix Bugs
@@ -81,16 +81,7 @@ function filterAndDisplayTasksByBoard(boardName) {
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
   const filteredTasks = tasks.filter(task => task.board = boardName);
 
-  filteredTasks.filter(task => task.status).forEach(task => {
-    const taskElement = document.createElement('div');
-    taskElement.classList.add("task-div");
-    taskElement.textContent = task.title;
-    taskElement.setAttribute('data-task-id', task.id);
-    taskElement.addEventListener('click', () => {
-      openEditTaskModal(task);
-    })
-    tasksContainer.appendChild(taskElement);
-  })
+  
 
   // Ensure the column titles are set outside of this function or correctly initialized before this function runs
 
@@ -99,7 +90,7 @@ function filterAndDisplayTasksByBoard(boardName) {
     // Reset column content while preserving the column title
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
-                          <h4 class="columnHeader">${status.toUpperCase()}</h4>
+                          <h4 class="columnHeader">${colTitle.toUpperCase()}</h4>
                         </div>`;
 
     const tasksContainer = document.createElement("div");
@@ -132,10 +123,10 @@ function styleActiveBoard(boardName) {
   document.querySelectorAll('.board-btn').forEach(btn => { 
     
     if(btn.textContent === boardName) {
-      btn.add('active') 
+      btn.classList.add('active');
     }
     else {
-      btn.remove('active'); 
+      btn.classList.remove('active'); 
     }
   });
 }
@@ -161,7 +152,7 @@ function addTaskToUI(task) {
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute('data-task-id', task.id);
   
-  tasksContainer.appendChild(); 
+  tasksContainer.appendChild(taskElement);
 }
 
 
@@ -232,7 +223,14 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
-  const sideBarDiv = document.getElementById('side-var-div');
+  const sidebar = document.getElementById('side-bar-div');
+  if (show){
+    sidebar.style.display = 'block';
+    elements.showSideBarBtn.style.display = 'none';
+  } else{
+    sidebar.style.display = 'none';
+    elements.showSideBarBtn.style.display = 'block'
+  }
   sideBarDiv.style.display = show ? 'block' : 'none';
  
 }
