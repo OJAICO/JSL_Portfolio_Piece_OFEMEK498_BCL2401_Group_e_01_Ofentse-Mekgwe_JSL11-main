@@ -65,7 +65,7 @@ function displayBoards(boards) {
       localStorage.setItem("activeBoard", JSON.stringify(activeBoard));
       styleActiveBoard(activeBoard);
     });
-    boardsContainer.appendChild(boardElement); // This line add
+    boardsContainer.appendChild(boardElement); // This line adds the 'Launch Career and Roadmap
   });
 }
 
@@ -194,7 +194,7 @@ function setupEventListeners() {
   elements.modalWindow.addEventListener('submit',  (event) => {
     addTask(event)
   });
-};
+}
 
 // Toggles tasks modal
 // Task: Fix bugs
@@ -211,7 +211,9 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-      
+      taskTitle: event.target.tasktitle.value,
+      description: event.target.description.value,
+      currStatus: event.target.status.value
     };
     const newTask = createNewTask(task);
     if (newTask) {
@@ -245,8 +247,19 @@ function toggleTheme() {
 
 
 function openEditTaskModal(task) {
-  
+  const editTaskModal = document.querySelector('.edit-task-modal-window');
+    const editTaskTitleInput = document.getElementById('edit-task-title-input');
+    const editTaskDescInput = document.getElementById('edit-task-desc-input');
+    const editSelectStatus = document.getElementById('edit-select-status');
+    const saveTaskChangesBtn = document.getElementById('save-task-changes-btn');
+    const cancelEditBtn = document.getElementById('cancel-edit-btn');
+    const deleteTaskBtn = document.getElementById('delete-task-btn');
 
+    editTaskTitleInput.value = task.title;
+    editTaskDescInput.value = task.description;
+    editSelectStatus.value = task.status;
+
+    
   
   // Set task details in modal inputs
   
