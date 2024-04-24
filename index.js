@@ -233,7 +233,7 @@ function toggleSidebar(show) {
     sidebar.style.display = 'none';
     elements.showSideBarBtn.style.display = 'block'
   }
-  a
+  
  
 }
 
@@ -245,15 +245,9 @@ function toggleTheme() {
 
 
 function openEditTaskModal(task) {
-  const editTaskModal = document.querySelector('.edit-task-modal-window');
-  const editTaskTitleInput = document.getElementById('edit-task-modal-title-input');
-  const editTaskDescInput = document.getElementById('edit-task-desc-input');
-  const editedSelectStatus = document.getElementById('edit-select-status');
-  const saveTaskChangesBtn = document.getElementById('save-task-changes-btn');
-  const cancelEditBtn = document.getElementById('cancel-edit-btn');
-  const deleteTaskBtn = document.getElementById('delete-task-btn');
+  
 
-  editTaskTitleInput.ariaValueMax.title
+  
   // Set task details in modal inputs
   
 
