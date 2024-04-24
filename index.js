@@ -181,10 +181,10 @@ function setupEventListeners() {
   elements.showSideBarBtn.addEventListener('click', () => toggleSidebar(true));
 
   // Theme switch event listener
-  elements.themeSwitch.addEventListener('click', toggleTheme);
+  elements.themeSwitch.addEventListener('change', toggleTheme);
 
   // Show Add New Task Modal event listener
-  elements.createNewTaskBtn.addEventListener('click', () => {
+  elements.modalWindow.addEventListener('click', () => {
     toggleModal(true);
     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
   });
