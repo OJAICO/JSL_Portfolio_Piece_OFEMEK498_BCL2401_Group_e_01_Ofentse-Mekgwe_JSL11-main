@@ -259,7 +259,13 @@ function openEditTaskModal(task) {
     editTaskDescInput.value = task.description;
     editSelectStatus.value = task.status;
 
-    
+    saveTaskChangesBtn.addEventListener('click', () => saveTaskChanges(task.id));
+    cancelEditBtn.addEventListener('click', () => toggleModal(false, editTaskModal));
+    deleteTaskBtn.addEventListener('click', () => {
+      toggleModal(false, editTaskModal);
+    })
+
+
   
   // Set task details in modal inputs
   
