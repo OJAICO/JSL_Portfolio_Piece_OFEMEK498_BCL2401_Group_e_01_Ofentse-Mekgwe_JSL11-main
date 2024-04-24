@@ -1,7 +1,8 @@
 // TASK: import helper functions from utils
 // TASK: import initialData
-import {initialData} from './initialData.js';
 import {getTasks, createNewTask, putTask, deleteTask} from './utils/taskFunctions.js';
+import {initialData} from './initialData.js';
+
 
 
 /*************************************************************************************************************************************************
@@ -184,7 +185,7 @@ function setupEventListeners() {
   elements.themeSwitch.addEventListener('change', toggleTheme);
 
   // Show Add New Task Modal event listener
-  elements.modalWindow.addEventListener('click', () => {
+  elements.createNewTaskBtn.addEventListener('click', () => {
     toggleModal(true);
     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
   });
@@ -232,7 +233,7 @@ function toggleSidebar(show) {
     sidebar.style.display = 'none';
     elements.showSideBarBtn.style.display = 'block'
   }
-  sideBarDiv.style.display = show ? 'block' : 'none';
+  a
  
 }
 
