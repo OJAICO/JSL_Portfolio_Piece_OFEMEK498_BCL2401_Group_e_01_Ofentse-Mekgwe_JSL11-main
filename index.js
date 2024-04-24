@@ -32,7 +32,7 @@ const elements = {
   editTaskModal: document.querySelector('.edit-task-modal-window')
 }
 
-let activeBoard = ""
+let activeBoard = "";
 
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
@@ -52,7 +52,7 @@ function fetchAndDisplayBoardsAndTasks() {
 // Creates different boards in the DOM
 // TASK: Fix Bugs
 function displayBoards(boards) {
-  const boardsContainer = document.querySelector("#boards-nav-links-div");
+  const boardsContainer = document.querySelector("#boards-nav-links-div"); // shows tasks
   boardsContainer.innerHTML = ''; // Clears the container
   boards.forEach(board => {
     const boardElement = document.createElement("button");
@@ -64,8 +64,8 @@ function displayBoards(boards) {
       activeBoard = board; // Assigns active board
       localStorage.setItem("activeBoard", JSON.stringify(activeBoard));
       styleActiveBoard(activeBoard);
-      boardsContainer.appendChild(boardElement);
     });
+    boardsContainer.appendChild(boardElement); // This line add
   });
 }
 
