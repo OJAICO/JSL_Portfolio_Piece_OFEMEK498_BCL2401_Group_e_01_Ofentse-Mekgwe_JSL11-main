@@ -79,7 +79,7 @@ const colTitle = {
 // TASK: Fix Bugs
 function filterAndDisplayTasksByBoard(boardName) {
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
-  const filteredTasks = tasks.filter(task => task.board = boardName);
+  const filteredTasks = tasks.filter(task => task.board === boardName);
 
   
 
@@ -88,6 +88,7 @@ function filterAndDisplayTasksByBoard(boardName) {
   elements.columnDivs.forEach(column => {
     const status = column.getAttribute("data-status");
     // Reset column content while preserving the column title
+    const colTitle = colTitle[status];
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
                           <h4 class="columnHeader">${colTitle.toUpperCase()}</h4>
