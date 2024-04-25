@@ -131,8 +131,7 @@ function styleActiveBoard(boardName) {
     
     if(btn.textContent === boardName) {
       btn.classList.add('active');
-    }
-    else {
+    } else {
       btn.classList.remove('active'); 
     }
   });
@@ -167,7 +166,7 @@ function addTaskToUI(task) {
 function setupEventListeners() {
   // Cancel editing task event listener
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
-  cancelEditBtn.addEventListener('click', () => {toggleModal(false, elements.editTaskModal)});
+  cancelEditBtn.addEventListener('click', () => toggleModal(false, elements.editTaskModal));
 
   // Cancel adding new task event listener
   const cancelAddTaskBtn = document.getElementById('cancel-add-task-btn');
@@ -216,9 +215,11 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-      taskTitle: event.target.tasktitle.value,
-      description: event.target.description.value,
-      currStatus: event.target.status.value
+      title: document.getElementById("title-input").value,
+      description: document.getElementById("desc-input").value,
+      status: document.getElementById("select-status").value,
+      baord: activeBoard,
+      
     };
     const newTask = createNewTask(task);
     if (newTask) {
