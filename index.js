@@ -253,19 +253,15 @@ function toggleTheme() {
 
 
 function openEditTaskModal(task) {
-  const editTaskModal = document.querySelector('.edit-task-modal-window');
-    const editTaskTitleInput = document.getElementById('edit-task-title-input');
-    const editTaskDescInput = document.getElementById('edit-task-desc-input');
-    const editSelectStatus = document.getElementById('edit-select-status');
-    const saveTaskChangesBtn = document.getElementById('save-task-changes-btn');
-    const cancelEditBtn = document.getElementById('cancel-edit-btn');
-    const deleteTaskBtn = document.getElementById('delete-task-btn');
+  document.getElementById('edit-task-title-input').value = task.title;
+  document.getElementById('edit-task-desc-input').value = task.description;
+  document.getElementById('edit-select-status').value = task.status;
 
-    editTaskTitleInput.value = task.title;
-    editTaskDescInput.value = task.description;
-    editSelectStatus.value = task.status;
+  const saveTaskChangesBtn = document.getElementById("save-task-changes-btn");
+  const cancelEditBtn = document.getElementById("cancel-edit-btn");
+  const deleteTaskBtn = document.getElementById("delete-task-btn");
 
-    saveTaskChangesBtn.addEventListener('click', () => saveTaskChanges(task.id));
+  saveTaskChangesBtn.addEventListener('click', () => saveTaskChanges(task.id));
     cancelEditBtn.addEventListener('click', () => toggleModal(false, editTaskModal));
     deleteTaskBtn.addEventListener('click', () => {
       toggleModal(false, editTaskModal);
