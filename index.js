@@ -282,8 +282,11 @@ function openEditTaskModal(task) {
     deleteTask(task.id);
     toggleModal(false, elements.editTaskModal);
     refreshTasksUI();
-  })
+  });
 
+  cancelEditBtn.addEventListener('click', () => {
+    toggleModal(true, elements.editTaskModal);
+  })
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
 
