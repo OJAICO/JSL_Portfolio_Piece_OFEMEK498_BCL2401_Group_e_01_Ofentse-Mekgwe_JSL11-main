@@ -28,7 +28,7 @@ const elements = {
   showSideBarBtn: document.getElementById('show-side-bar-btn'),
   themeSwitch: document.getElementById('switch'),
   createNewTaskBtn: document.getElementById('create-task-btn'),
-  modalWindow: document.querySelector('.modal-window'),
+  modalWindow: document.getElementById('new-task-modal-window'),
   editTaskModal: document.querySelector('.edit-task-modal-window')
 }
 
@@ -263,7 +263,7 @@ function openEditTaskModal(task) {
     cancelEditBtn.addEventListener('click', () => toggleModal(false, editTaskModal));
     deleteTaskBtn.addEventListener('click', () => {
       toggleModal(false, editTaskModal);
-    })
+    });
 
 
   
@@ -283,6 +283,9 @@ function openEditTaskModal(task) {
 }
 
 function saveTaskChanges(taskId) {
+  const editedTitle = document.getElementById('edit-task-title-input').value;
+  const editedDesc = document.getElementById('edit-task-desc-input').value;
+  const editedStatus = document.getElementById('edit-select-status').value;
   // Get new user inputs
   
 
