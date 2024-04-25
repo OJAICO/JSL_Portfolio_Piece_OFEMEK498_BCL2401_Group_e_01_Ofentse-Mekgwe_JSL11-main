@@ -31,6 +31,10 @@ const elements = {
   modalWindow: document.getElementById('new-task-modal-window'),
   editTaskModal: document.querySelector('.edit-task-modal-window'),
   toggleDiv: document.querySelector('.toggle-div'),
+  showSidebar: document.getElementById('side-bar-div'),
+  sideBarBottom: document.querySelector('.side-bar-bottom'),
+  darkTheme: document.getElementById('icon-dark'),
+  lightThemeIcon: document.getElementById('icon-light'),
 }
 
 let activeBoard = "";
