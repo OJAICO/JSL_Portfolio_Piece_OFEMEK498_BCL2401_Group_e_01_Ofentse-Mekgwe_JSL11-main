@@ -261,12 +261,11 @@ function openEditTaskModal(task) {
   const cancelEditBtn = document.getElementById("cancel-edit-btn");
   const deleteTaskBtn = document.getElementById("delete-task-btn");
 
-  saveTaskChangesBtn.addEventListener('click', () => saveTaskChanges(task.id));
-    cancelEditBtn.addEventListener('click', () => toggleModal(false, editTaskModal));
-    deleteTaskBtn.addEventListener('click', () => {
-      toggleModal(false, editTaskModal);
-    });
-
+  saveTaskChangesBtn.addEventListener("click", () => {
+    saveTaskChanges(task.id);
+    toggleModal(false, elements.editTaskModal);
+    refreshTasksUI();
+  });
 
   
   // Set task details in modal inputs
@@ -279,7 +278,11 @@ function openEditTaskModal(task) {
  
 
   // Delete task using a helper function and close the task modal
-
+  deleteTaskBtn.addEventListener("click", () => {
+    deleteTask(task.id);
+    toggleModal(false, elements.editTaskModal);
+    refreshTasksUI();
+  })
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
