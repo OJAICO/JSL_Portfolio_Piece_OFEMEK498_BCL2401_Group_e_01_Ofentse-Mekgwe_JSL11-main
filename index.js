@@ -100,11 +100,7 @@ function displayBoards(boards) {
     boardsContainer.appendChild(boardElement);
   });
 }
-const colTitles = {
-  todo: "todo",
-  doing: "doing",
-  done: "done",
-};
+
 
 // Filters tasks corresponding to the board name and displays them on the DOM.
 // TASK: Fix Bugs
@@ -117,10 +113,10 @@ function filterAndDisplayTasksByBoard(boardName) {
   elements.columnDivs.forEach((column) => {
     const status = column.getAttribute("data-status");
     // Reset column content while preserving the column title
-    const colTitle = colTitles[status];
+    
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
-                          <h4 class="columnHeader">${colTitle.toUpperCase()}</h4>
+                          <h4 class="columnHeader">${status.toUpperCase()}</h4>
                         </div>`;
 
     const tasksContainer = document.createElement("div");
@@ -218,7 +214,9 @@ function setupEventListeners() {
   });
 
   // Theme switch event listener
-  elements.themeSwitch.addEventListener("change", toggleTheme);
+  elements.themeSwitch.addEventListener("change", (event) => 
+  toggleTheme(event)
+);
 
   // Show Add New Task Modal event listener
   elements.createNewTaskBtn.addEventListener("click", () => {
