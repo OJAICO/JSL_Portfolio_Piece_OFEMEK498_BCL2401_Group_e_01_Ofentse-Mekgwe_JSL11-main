@@ -301,17 +301,31 @@ function toggleTheme(show) {
 
 function openEditTaskModal(task) {
   // Set task details in modal inputs
+  const editTaskTitleInput = document.getElementById("edit-task-title-input"),
+   editTaskDescInput = document.getElementById("edit-task-desc-input"),
+   editSelectStatus = document.getElementById("edit-select-status");
+
+  editTaskTitleInput.value = task.title;
+  editTaskDescInput.value = task.description;
+  const selectStatus = editSelectStatus.querySelector(
+    `option[value = ${task.status}]`
+  );
+  selectStatus.selected = true;
+   
+   
 
   // Get button elements from the task modal
-  const saveTaskBtn = document.getElementById("save-task-changes-btn"),
-    deleteTaskBtn = document.getElementById("delete-task-btn");
+ const saveTaskBtn = document.getElementById("save-task-changes-btn"),
+  deleteTaskBtn = document.getElementById("delete-task-btn");
 
   // Call saveTaskChanges upon click of Save Changes button
-  saveTaskBtn.addEventListener("click", () => {
+  saveTaskBtn.addEventListener("click", (event) => {
+    event.preventDefault()
     saveTaskChanges(task.id);
   });
   // Delete task using a helper function and close the task modal
-  deleteTaskBtn.addEventListener("click", () => {
+  deleteTaskBtn.addEventListener("click", (event) => {
+    event.preventDefault();
     deleteTask(task.id);
     toggleModal(false, elements.editTaskModal);
     refreshTasksUI();
@@ -333,9 +347,9 @@ function saveTaskChanges(taskId) {
   // Create an object with the updated task details
   const updatedTaskDetails = {
     id: taskId,
-    title: elements.editTaskTitleInput.value,
-    description: elements.editTaskDescInput,
-    status: elements.editSelectStatus.value,
+    title: editTaskTitleInput,
+    description: editTaskDescInput,
+    status: editSelectStatus,
     board: activeBoard,
   };
 
@@ -354,6 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function init() {
+  initializeData();
   setupEventListeners();
   const showSidebar = localStorage.getItem("showSideBar") === "true";
   toggleSidebar(showSidebar);
