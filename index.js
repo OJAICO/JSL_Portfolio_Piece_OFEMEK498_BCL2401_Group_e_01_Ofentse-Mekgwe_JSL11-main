@@ -284,15 +284,20 @@ function toggleSidebar(show) {
 
 elements.sideBarBottom.style.paddingTop = "300px";
 
-function toggleTheme() {
-  const isLightTheme = elements.themeSwitch.checked;
-  if (isLightTheme) {
-    localStorage.setItem("light-theme", "enabled"); // set to light mode
-  } else {
-    localStorage.setItem("light-theme", "disabled"); // set back to default
-  }
-
-  document.body.classList.toggle("light-theme", isLightTheme); //Toggle the 'light-theme' class
+function toggleTheme(show) {
+  const isLightTheme =
+  show === "enabled" ||
+  show === true ||
+  elements.themeSwitch.checked === true;
+  document.body.classList.toggle("light-theme", isLightTheme);
+  const loadedLogo = elements.logo.src.split("/").pop(),
+  getLogo = loadedLogo.replace(
+    isLightTheme ? "logo-dark.svg" : "logo-light.svg",
+    isLightTheme ? "logo-light.svg" : "logo-dark.svg"
+  );
+  elements.logo.src = elements.logo.src.replace(loadedLogo, getLogo);
+  localStorage.setItem("light-theme", isLightTheme ? "enabled" : "disabled");
+    //Toggle the 'light-theme' class
 }
 
 function openEditTaskModal(task) {
