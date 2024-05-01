@@ -21,7 +21,6 @@ function initializeData() {
     console.log("Data already exists in localStorage");
   }
 }
-initializeData();
 
 // TASK: Get elements from the DOM
 const elements = {
@@ -32,6 +31,7 @@ const elements = {
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
   sideBar: document.querySelector(".side-bar"),
   sideBarBottom: document.querySelector(".side-bar-bottom"),
+  logo: document.getElementById("logo"),
   // editTaskModal: document.getElementById("edit-task-modal-window"),
   // Main Layout: Header with board title, add task button, and main content area for task columns.
   headerBoardName: document.getElementById("header-board-name"),
