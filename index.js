@@ -46,7 +46,7 @@ const elements = {
   titleInput: document.getElementById("title-input"),
   descriptionInput: document.getElementById("desc-input"),
   selectStatus: document.getElementById("select-status"),
-  createTaskBtn: document.getElementById("create-task-btn"),
+  createNewTaskBtn: document.getElementById("add-new-task-btn"),
   cancelAddTaskBtn: document.getElementById("cancel-add-task-btn"),
   // Edit Task Modal: Form for editing an existing task's details.
   editTaskModal: document.querySelector(".edit-task-modal-window"),
@@ -61,6 +61,7 @@ const elements = {
   // Filter Div
   filterDiv: document.getElementById("filterDiv"),
 };
+
 let activeBoard = "";
 
 // Extracts unique board names from tasks
@@ -82,7 +83,7 @@ function fetchAndDisplayBoardsAndTasks() {
 // Creates different boards in the DOM
 // TASK: Fix Bugs
 function displayBoards(boards) {
-  const boardsContainer = document.querySelector("#boards-nav-links-div"); // change id to 'container'
+  const boardsContainer = document.getElementById("boards-nav-links-div"); // change id to 'container'
   boardsContainer.innerHTML = ""; // Clears the container ***
   boards.forEach((board) => {
     const boardElement = document.createElement("button");
